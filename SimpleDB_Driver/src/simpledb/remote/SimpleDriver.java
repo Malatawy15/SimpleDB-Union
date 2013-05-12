@@ -3,6 +3,7 @@ package simpledb.remote;
 import java.sql.*;
 import java.rmi.*;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 /**
  * The SimpleDB database driver.
@@ -35,4 +36,10 @@ public class SimpleDriver extends DriverAdapter {
          throw new SQLException(e);
       }
    }
+
+@Override
+public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+	// TODO Auto-generated method stub
+	return null;
+}
 }
