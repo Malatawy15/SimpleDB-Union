@@ -1,63 +1,29 @@
 package simpledb.parse;
 
-import simpledb.query.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
-/**
- * Data for the SQL <i>select</i> statement.
- * @author Edward Sciore
- */
 public class QueryData {
-   private Collection<String> fields;
-   private Collection<String> tables;
-   private Predicate pred;
-   
-   /**
-    * Saves the field and table list and predicate.
-    */
-   public QueryData(Collection<String> fields, Collection<String> tables, Predicate pred) {
-      this.fields = fields;
-      this.tables = tables;
-      this.pred = pred;
-   }
-   
-   /**
-    * Returns the fields mentioned in the select clause.
-    * @return a collection of field names
-    */
-   public Collection<String> fields() {
-      return fields;
-   }
-   
-   /**
-    * Returns the tables mentioned in the from clause.
-    * @return a collection of table names
-    */
-   public Collection<String> tables() {
-      return tables;
-   }
-   
-   /**
-    * Returns the predicate that describes which
-    * records should be in the output table.
-    * @return the query predicate
-    */
-   public Predicate pred() {
-      return pred;
-   }
-   
-   public String toString() {
-      String result = "select ";
-      for (String fldname : fields)
-         result += fldname + ", ";
-      result = result.substring(0, result.length()-2); //remove final comma
-      result += " from ";
-      for (String tblname : tables)
-         result += tblname + ", ";
-      result = result.substring(0, result.length()-2); //remove final comma
-      String predstring = pred.toString();
-      if (!predstring.equals(""))
-         result += " where " + predstring;
-      return result;
-   }
+	private Collection<SelectQueryData> L = new ArrayList<SelectQueryData>();
+
+	public QueryData(SelectQueryData d) {
+		L.add(d);
+	}
+
+	public void add(QueryData qd) {
+		L.addAll(qd.L);
+	}
+
+	public Collection<SelectQueryData> getAll() {
+		return L;
+	}
+
+	public String toString() {
+		Iterator<SelectQueryData> iter = L.iterator();
+		String result = iter.next().toString();
+		while (iter.hasNext())
+			result += " UNION " + iter.next().toString();
+		return result;
+	}
 }

@@ -6,12 +6,12 @@ package simpledb.parse;
  */
 public class CreateViewData {
    private String viewname;
-   private QueryData qrydata;
+   private SelectQueryData qrydata;
    
    /**
     * Saves the view name and its definition.
     */
-   public CreateViewData(String viewname, QueryData qrydata) {
+   public CreateViewData(String viewname, SelectQueryData qrydata) {
       this.viewname = viewname;
       this.qrydata = qrydata;
    }

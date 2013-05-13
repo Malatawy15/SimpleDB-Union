@@ -3,7 +3,7 @@ package simpledb.opt;
 import simpledb.tx.Transaction;
 import simpledb.query.*;
 import simpledb.opt.TablePlanner;
-import simpledb.parse.QueryData;
+import simpledb.parse.SelectQueryData;
 import simpledb.planner.QueryPlanner;
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class HeuristicQueryPlanner implements QueryPlanner {
     * H2. Add the table to the join order which
     * results in the smallest output.
     */
-   public Plan createPlan(QueryData data, Transaction tx) {
+   public Plan createPlan(SelectQueryData data, Transaction tx) {
       
       // Step 1:  Create a TablePlanner object for each mentioned table
       for (String tblname : data.tables()) {

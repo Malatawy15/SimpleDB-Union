@@ -1,7 +1,6 @@
 package simpledb.remote;
 
 import java.sql.*;
-import java.util.concurrent.Executor;
 
 /**
  * An adapter class that wraps RemoteConnection.
@@ -34,35 +33,5 @@ public class SimpleConnection extends ConnectionAdapter {
          throw new SQLException(e);
       }
    }
-
-@Override
-public void abort(Executor arg0) throws SQLException {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public int getNetworkTimeout() throws SQLException {
-	// TODO Auto-generated method stub
-	return 0;
-}
-
-@Override
-public String getSchema() throws SQLException {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public void setNetworkTimeout(Executor arg0, int arg1) throws SQLException {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void setSchema(String arg0) throws SQLException {
-	// TODO Auto-generated method stub
-	
-}
 }
 

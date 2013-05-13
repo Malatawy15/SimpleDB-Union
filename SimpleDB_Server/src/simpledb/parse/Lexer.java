@@ -17,6 +17,8 @@ public class Lexer {
     */
    public Lexer(String s) {
       initKeywords();
+      //Author: Hossam
+      //puts the keywords in the collection keywords.
       tok = new StreamTokenizer(new StringReader(s));
       tok.ordinaryChar('.');
       tok.lowerCaseMode(true); //ids and keywords are converted
@@ -149,6 +151,6 @@ public class Lexer {
    private void initKeywords() {
       keywords = Arrays.asList("select", "from", "where", "and",
                                "insert", "into", "values", "delete", "update", "set", 
-                               "create", "table", "int", "varchar", "view", "as", "index", "on");
+                               "create", "table", "int", "varchar", "view", "as", "index", "on", "union");
    }
 }
